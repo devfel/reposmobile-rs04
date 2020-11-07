@@ -33,7 +33,7 @@ export default function App() {
           data={repositories}
           keyExtractor={(el) => el.id}
           renderItem={({ item: rep }) => (
-            <>
+            <View style={styles.repositoryContainer}>
               <Text style={styles.repository}>{rep.title}</Text>
 
               <View style={styles.techsContainer}>
@@ -46,14 +46,14 @@ export default function App() {
 
               <View style={styles.likesContainer}>
                 <Text style={styles.likeText} testID={`repository-likes-${rep.id}`}>
-                  {rep.likes}
+                  {rep.likes} curtidas
                 </Text>
               </View>
 
-              <TouchableOpacity style={styles.button} onPress={() => handleLikeRepository(`${rep.id}`)} testID={`like-button-${rep.id}`}>
+              <TouchableOpacity style={styles.button} onPress={() => handleLikeRepository(rep.id)} testID={`like-button-${rep.id}`}>
                 <Text style={styles.buttonText}>Curtir</Text>
               </TouchableOpacity>
-            </>
+            </View>
           )}
         />
       </SafeAreaView>
